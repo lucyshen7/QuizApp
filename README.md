@@ -1,16 +1,15 @@
 # QuizApp Midterm Project
 
-## Welcome to my midterm project, **QuizApp!** 📚
+## Welcome to our midterm project, **QuizApp!** 📚
 
-QuizApp is a multi-page quiz application built with Express.js, Node.js, PostgreSQL and CSS/Sass. Features include the ability to create and take a personal quiz, calculating top score, and toggle between private and public quizzes.
+QuizApp is a full-stack multi-page quiz application built with Express.js, Node.js, PostgreSQL and CSS/Sass. 
 
 **QuizApp features:**
-- Create a quiz
-- Take a private or public quiz
+- Ability to create and take a quiz
+- Toggle between private and public quizzes
 - Top score for public quizzes
 - Quiz results page
-- Share link to take quiz or see results
-- Toggle between private and public quizzes
+- Share link to take a quiz or results
 
 ## Final Product
 !["Screenshot of profile page with public and private quizzes"](/docs/toggle-private.png)
