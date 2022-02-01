@@ -4,7 +4,7 @@
 
 QuizApp is a full-stack multi-page quiz application built with Express.js, Node.js, PostgreSQL and CSS/Sass. 
 
-# QuizApp features:**
+**QuizApp features:**
 - Ability to create and take a quiz
 - Toggle between private and public quizzes
 - Top score for public quizzes
