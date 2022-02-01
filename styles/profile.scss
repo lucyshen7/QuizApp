@@ -29,13 +29,12 @@
   display: flex;
   flex-direction: column;
   width: 60%;
-
-  background-color: #FEADA6;
-  background: linear-gradient(
-  200deg,
-    #feada6 0%,
-    #a896ad 100%
-  );
+  background-image: linear-gradient(to top, #ebc0fd 0%, #d9ded8 100%);
+  margin-top: 12.5%;
+  margin-bottom: 5%;
+  width: 70%;
+  height: 100vh;
+  border-radius: 30px 30px 30px 30px;
 }
 
 .fa-toggle-off {

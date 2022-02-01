@@ -2,6 +2,7 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
+
   router.get("/:user_id", (req, res) => {
     const id = req.params.user_id;
     let query = `
@@ -9,7 +10,6 @@ module.exports = (db) => {
     FULL OUTER JOIN quizzes ON users.id = quizzes.user_id
     WHERE users.id = $1;
     `;
-    // console.log(query);
     db.query(query, [id])
       .then(data => {
         const quizzes = data.rows;

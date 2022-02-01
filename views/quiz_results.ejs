@@ -51,17 +51,17 @@
       <div class="quiz_title"><%= attempt_user %>'s Results: <%= quiz_name %></div>
         <div class="results_options">
           <h2 class="score">Total: <%= attempt_score %>/4</h2>
-          <a class="nav-item" href="/api/quiz/<%= quiz_id %>">
+          <a class="nav-item" href="/quiz/<%= quiz_id %>">
             <button class="try_again" type="try_again">Try Again</button></a>
 
-          <input class='hide' type="text" value="http://localhost:8080/api/quiz/results/<%= quiz_id %>/attempt/<%=attempt_id%>" id="myInput-<%=quiz_id%>">
+          <input class='hide' type="text" value="http://localhost:8080/quiz/results/<%= quiz_id %>/attempt/<%=attempt_id%>" id="myInput-<%=quiz_id%>">
           <button class='try_again' type='try_again' onclick="myFunction(`<%=quiz_id%>`)">Share Results</button>
         </div>
     </div>
     <section class="all_questions">
-      <form action='/api/quiz/<%= quiz_id %>' method='POST'>
+      <form action='/quiz/<%= quiz_id %>' method='POST'>
         <% questions.forEach((item) => {%>
-        <article>
+        <article class="results_box">
           <header>
             <div class="question">
               <p><%= item.question %></p>

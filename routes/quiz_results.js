@@ -18,7 +18,6 @@ module.exports = (db) => {
     db.query(query, [quiz_id, attempt_id])
       .then(data => {
         const results = data.rows;
-        // console.log('results', results);
 
         // check if user logged in
         const user_id = req.session.user_id;
@@ -30,7 +29,6 @@ module.exports = (db) => {
           quiz_id: results[0].quiz_id,
           attempt_id: results[0].attempt_id
         };
-         console.log('templateVars', templateVars);
 
         const questions = [];
         data.rows.forEach((i) => {
@@ -52,15 +50,12 @@ module.exports = (db) => {
         data.rows.forEach((x) => {
           x.correct ? scores.push(1) : scores.push(0);
         })
-        // console.log('selected_answers', selected_answers)
         let index = 0;
         templateVars.questions.forEach((x) => {
           x.attempted_answer = selected_answers[index];
           x.score = scores[index];
           index++;
         })
-        console.log('templateVars', templateVars);
-        // console.log(templateVars.questions[0].answers);
         res.render("quiz_results", templateVars);
       })
       .catch(err => {

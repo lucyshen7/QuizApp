@@ -1,10 +1,4 @@
 .container {
-  // background: #D8C3A5;
-  // background: linear-gradient(
-  // 200deg,
-  // #93A5CF 0%,
-  // #E4EFE9 100%
-  // );
   height: 80%;
   width: 70%;
   display: flex;
@@ -22,12 +16,17 @@
   font-size: 35px;
   font-weight:bold;
   margin: 0.8em;
+  color: #fffdd0;
 }
 
 .question {
   font-size: 23px;
   font-weight:bold;
   margin-bottom: 15px;
+}
+
+.questions_box {
+  border-radius: 30px 30px 30px 30px;
 }
 
 .bubble {

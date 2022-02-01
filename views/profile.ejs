@@ -43,7 +43,6 @@
   <%- include('partials/_header') %>
 
   <main class="profile_container">
-
     <div class = "public_quizzes" id="list_public">
       <h3 class="title">Public Quizzes</h3>
       <table class="public_table">
@@ -61,7 +60,7 @@
       </div>
     </div>
 
-    <div class = "public_quizzes private_quizzes">
+    <div class = "private_quizzes">
       <h3 class="title">My Quizzes</h3>
       <table>
         <thead>
@@ -79,11 +78,11 @@
             <td><%= quiz.name %></td>
             <td>
 
-              <input class='hide' type="text" value="http://localhost:8080/api/quiz/<%= quiz.id %>" id="myInput-<%=quiz.id%>">
+              <input class='hide' type="text" value="http://localhost:8080/quiz/<%= quiz.id %>" id="myInput-<%=quiz.id%>">
               <button class="copy_link" onclick="myFunction(`<%=quiz.id%>`)">Copy Link</button>
 
             </td>
-            <td><a class="start_quiz" href="/api/quiz/<%= quiz.id %>">Start Quiz</td>
+            <td><a class="start_quiz" href="/quiz/<%= quiz.id %>">Start Quiz</td>
             <td>
               <% if (!quiz.public) { %>
                 <i class="fas fa-toggle-off public-btn publickey-<%= quiz.id %>" data-quiz_id="publickey-<%= quiz.id %>"></i>
@@ -98,11 +97,7 @@
       </tbody>
       <% } %>
       </table>
-
     </div>
-
   </main>
-
 </body>
-
 </html>

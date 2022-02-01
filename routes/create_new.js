@@ -11,7 +11,6 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
-  console.log("hello");
   router.get("/new", (req, res) => {
     let query = ``;
     console.log(query);

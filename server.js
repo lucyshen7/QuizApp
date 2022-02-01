@@ -42,50 +42,42 @@ app.use(
 app.use(express.static("public"));
 
 // Separated Routes for each Resource
-// Note: Feel free to replace the example routes below with your own
-const usersRoutes = require("./routes/users");
-const widgetsRoutes = require("./routes/widgets");
-const quizzesRoutes = require("./routes/quizzes");
-const quizResultsRoutes = require("./routes/quiz_results");
-const profileRoutes = require("./routes/profile");
-const loadPublic = require("./routes/load_public");
-// const search = require("./routes/search");
-const quizRoutes = require("./routes/quiz");
-const quizNewRoutes = require("./routes/create_new");
-const quizNewPostRoutes = require("./routes/create_new_post");
 const { cookie } = require("express/lib/response");
 
-// Mount all resource routes
-// Note: Feel free to replace the example routes below with your own
-app.use("/api/users", usersRoutes(db));
-app.use("/api/widgets", widgetsRoutes(db));
-app.use("/api/quizzes", quizzesRoutes(db));
-app.use("/api/quiz/results", quizResultsRoutes(db));
+const homepage = require("./routes/homepage");
+const profileRoutes = require("./routes/profile");
+
+const quizRoutes = require("./routes/quiz");
+const quizResultsRoutes = require("./routes/quiz_results");
+
+const quizNewRoutes = require("./routes/create_new");
+const quizNewPostRoutes = require("./routes/create_new_post");
+const loadPublic = require("./routes/load_public");
+// const search = require("./routes/search");
+
+app.use("/quizzes", homepage(db));
+app.use("/profile", profileRoutes(db));
+
+app.use("/quiz", quizRoutes(db));
+app.use("/quiz/results", quizResultsRoutes(db));
+
+app.use("/quizzes", quizNewRoutes(db));
+app.use("/quizzes", quizNewPostRoutes(db));
+app.use("/api/public", loadPublic(db)); // sends JSON, so keep the /api
+
 // app.use("/api/quizzes/search", search(db));
-app.use("/api/quiz", quizRoutes(db));
-app.use("/api/quizzes", quizNewRoutes(db));
-app.use("/api/quizzes", quizNewPostRoutes(db));
-app.use("/api/profile", profileRoutes(db));
-app.use("/api/public", loadPublic(db)); // sends JSON
-// Note: mount other resources here, using the same pattern above
 
 // Home page
-// Warning: avoid creating more routes in this file!
-// Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.redirect("/api/quizzes/public");
+  res.redirect("/quizzes/public");
 });
 
 app.get('/login/:id', (req, res) => {
-  // cookie-session middleware
-  req.session.user_id = req.params.id;
+  req.session.user_id = req.params.id; // cookie-session middleware
+  res.cookie('user_id', req.params.id); // cookie-parser middleware
 
-  // cookie-parser middleware
-  res.cookie('user_id', req.params.id);
-
-  // send the user somewhere
-  res.redirect('/');
+  res.redirect('/'); // send the user somewhere
 });
 
 // logout
@@ -102,5 +94,5 @@ app.locals.indexToLetter = function(index) {
 };
 
 app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`);
+  console.log(`🎉Example app listening on port ${PORT}`);
 });

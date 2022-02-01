@@ -1,10 +1,3 @@
-/*
- * All routes for Widgets are defined here
- * Since this file is loaded in server.js into api/widgets,
- *   these routes are mounted onto /widgets
- * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
- */
-
 const { text } = require('express');
 const express = require('express');
 const router = express.Router();
@@ -95,18 +88,10 @@ module.exports = (db) => {
       });
   });
 
-
   router.post("/:id", (req, res) => {
-    // console.log('req.body', req.body)
-
-    // Converting attempted answers object (req.body) into an array of arrays
     let submissions = Object.keys(req.body).map((key) => [key, req.body[key]]);
-
-    // console.log('submissions', submissions)
-
     const user_id = req.session.user_id;
     const id = req.params.id;
-    // Calculate score from submissions
     getScore(db, submissions, id)
       .then(score => {
         getQuizFromDB(id, db)
@@ -116,7 +101,6 @@ module.exports = (db) => {
             RETURNING id;`
             db.query(attempts_query)
               .then((attempts) => {
-                console.log('attempts_query successful')
 
                 let attempt_id = attempts.rows[0].id;
                 let submissions_query =
@@ -130,10 +114,7 @@ module.exports = (db) => {
 
                 db.query(submissions_query)
                   .then(() => {
-                    console.log('success for submissions_query')
-
                     return res.redirect(`results/${templateVars.quiz_id}/attempt/${attempt_id}`);
-
                   })
                   .catch(err => {
                     console.log(err)

@@ -1,9 +1,3 @@
-/*
- * All routes for quizzes are defined here
- * Since this file is loaded in server.js into api/widgets,
- *   these routes are mounted onto /widgets
- * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
- */
 
 //comeback to work on
 
@@ -11,28 +5,6 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
-
-  // router.post("/new", (req, res) => {
-  //   console.log("hello");
-  //   // let query1 = ` INSERT INTO quizzes () VALUES ()  `;
-  //   // let query2 = ` INSERT INTO questions () VALUES ()  `;
-  //   // let query3 = ` INSERT INTO answers () VALUES ()  `;
-  //   // console.log(query);
-  //   // db.query1(query1)
-  //   //   .then(data => {
-  //   //     console.log(req.body);
-  //   //     const quizzes = data.rows;
-  //   //     console.log(quizzes);
-  //   //     templateVars = {quizzes}
-  //   //     res.render("new_quiz", templateVars);
-  //   //   })
-  //   //   .catch(err => {
-  //   //     res
-  //   //       .status(500)
-  //   //       .json({ error: err.message });
-  //     // });
-  // });
-
   router.post("/new", (req,res) => {
     console.log(req.body)
     let name = req.body['quizname'];
@@ -74,21 +46,17 @@ module.exports = (db) => {
                 VALUES ($1, $2, $3)
                 RETURNING id;`
               , [questionId, req.body[ans][i], isAnsCorr])
-              // promises.push(answers)
             }
-            // return Promise.all(promises)
           }
           const id = req.session.user_id;
           console.log('id is', id);
-          return res.redirect(`/api/profile/${id}`);
+          return res.redirect(`/profile/${id}`);
         })
       .catch(err => {
               res
                 .status(500)
                 .json({ error: err.message });
             });
-
-
   });
   return router;
 };

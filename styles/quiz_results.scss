@@ -1,9 +1,8 @@
-
-
 .results_title {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  color: #fffdd0;
 }
 
 .results_options {
@@ -11,6 +10,10 @@
   flex-direction: column;
   justify-content: space-around;
   padding-right: 2em;
+}
+
+.results_box {
+  border-radius: 30px 30px 30px 30px;
 }
 
 .score {
@@ -43,7 +46,6 @@
   justify-content: space-between;
   padding-right: 5%;
 }
-
 
 .total {
   display: flex;

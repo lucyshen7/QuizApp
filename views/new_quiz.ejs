@@ -1,174 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Create a quiz</title>
 
-<head>
-  <title>Create a quiz</title>
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/quiz_results.css" type="text/css" />
 
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/quiz_results.css" type="text/css" />
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
 
+    <!-- Font awesome library-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
 
-  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
+    <!-- fonts for CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-  <!-- Font awesome library-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" type="text/css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-
-  <!-- fonts for CSS -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
-
-</head>
-
-
-
-<body>
-  <%- include('partials/_header') %>
-  <% if(user) { %>
-  <div class = "create_new_quiz">
-    <p><b>Create a new quiz</b></p>
-    <form method = "POST" action = "/api/quizzes/new">
-      <div class = "quiz_info_form">
-        <label>Quiz</label>
-        <input name = "quizname" required/>
-        <label>Subject</label>
-        <input name = "Subject" required/>
-        <label>Difficulty Level</label>
-        <input name = "Difficulty" required/>
-      </div>
-
-      <div class = "quiz_question_container">
-        <div class = "question_box">
-
-          <div class = "question_1">
-            <div class = "single_question_box">
-              <label>Question 1</label>
-              <input class='question_input' name = "question" required/>
-            </div>
-            <div class = "solns">
-              <div class = "question_options">
-                <div> Insert answer</div>
-                <label>A</label>
-                <input name = "answers1" required/>
-                <label>B</label>
-                <input name = "answers1" required/>
-                <label>C</label>
-                <input name = "answers1" required/>
-              </div>
-              <div class = "question_options">
-                <div> Select correct answer</div>
-                <label>A</label>
-                <input type='radio' class='bubble' name = "soln1" value = "1" required/>
-                <label>B</label>
-                <input type='radio' class='bubble' name = "soln1" value = "2" required/>
-                <label>C</label>
-                <input type='radio' class='bubble' name = "soln1" value = "3" required/>
-              </div>
-            </div>
-          </div>
-
-          <div class = "question_1">
-            <div class = "single_question_box">
-              <label>Question 2</label>
-              <input name = "question" required/>
-            </div>
-            <div class = "solns">
-              <div class = "question_options">
-                <div> Insert Answer </div>
-                <label>A</label>
-                <input name = "answers2" required/>
-                <label>B</label>
-                <input name = "answers2" required/>
-                <label>C</label>
-                <input name = "answers2" required/>
-              </div>
-              <div class = "question_options">
-                <div> Select correct answer</div>
-                <label>A</label>
-                <input type='radio' class='bubble' name = "soln2" value = "1" required/>
-                <label>B</label>
-                <input type='radio' class='bubble' name = "soln2" value = "2" required/>
-                <label>C</label>
-                <input type='radio' class='bubble' name = "soln2" value = "3" required/>
-              </div>
-            </div>
-          </div>
-
-          <div class = "question_1">
-            <div class = "single_question_box">
-              <label>Question 3</label>
-              <input name = "question" required/>
-            </div>
-            <div class = "solns">
-              <div class = "question_options">
-                <div> Insert Answer</div>
-                <label>A</label>
-                <input name = "answers3" required/>
-                <label>B</label>
-                <input name = "answers3" required/>
-                <label>C</label>
-                <input name = "answers3" required/>
-              </div>
-              <div class = "question_options">
-                <div> Select correct answer</div>
-                <label>A</label>
-                <input type='radio' class='bubble' name = "soln3" value = "1" required/>
-                <label>B</label>
-                <input type='radio' class='bubble' name = "soln3" value = "2" required/>
-                <label>C</label>
-                <input type='radio' class='bubble' name = "soln3" value = "3" required/>
-              </div>
-            </div>
-          </div>
-
-          <div class = "question_1">
-            <div class = "single_question_box">
-              <label>Question 4</label>
-              <input name = "question" required/>
-            </div>
-            <div class = "solns">
-              <div class = "question_options">
-                <div> Insert Answer</div>
-                <label>A</label>
-                <input name = "answers4" required/>
-                <label>B</label>
-                <input name = "answers4" required/>
-                <label>C</label>
-                <input name = "answers4" required/>
-              </div>
-              <div class = "question_options">
-                <div> Select correct answer</div>
-                <label>A</label>
-                <input type='radio' class='bubble' name = "soln4" value = "1" required/>
-                <label>B</label>
-                <input type='radio' class='bubble' name = "soln4" value = "2" required/>
-                <label>C</label>
-                <input type='radio' class='bubble' name = "soln4" value = "3" required/>
-              </div>
-            </div>
-          </div>
-
+  <body>
+    <%- include('partials/_header') %> <% if(user) { %>
+    <div class="create_new_quiz">
+      <p class="create_title"><b>Create a new quiz</b></p>
+      <form method="POST" action="/quizzes/new">
+        <div class="quiz_info_form">
+          <label>Quiz</label>
+          <input name="quizname" required />
+          <label>Subject</label>
+          <input name="Subject" required />
+          <label>Difficulty Level</label>
+          <input name="Difficulty" required />
         </div>
+
+        <div class="quiz_question_container">
+          <div class="question_box">
+            <div class="question_1">
+              <div class="single_question_box">
+                <label>Question 1</label>
+                <input class="question_input" name="question" required />
+              </div>
+              <div class="solns">
+                <div class="question_options">
+                  <div>Insert answer</div>
+                  <label>A</label>
+                  <input name="answers1" required />
+                  <label>B</label>
+                  <input name="answers1" required />
+                  <label>C</label>
+                  <input name="answers1" required />
+                </div>
+                <div class="question_options">
+                  <div>Select correct answer</div>
+                  <label>A</label>
+                  <input
+                    type="radio"
+                    class="bubble"
+                    name="soln1"
+                    value="1"
+                    required
+                  />
+                  <label>B</label>
+                  <input
+                    type="radio"
+                    class="bubble"
+                    name="soln1"
+                    value="2"
+                    required
+                  />
+                  <label>C</label>
+                  <input
+                    type="radio"
+                    class="bubble"
+                    name="soln1"
+                    value="3"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="question_1">
+              <div class="single_question_box">
+                <label>Question 2</label>
+                <input name="question" required />
+              </div>
+              <div class="solns">
+                <div class="question_options">
+                  <div>Insert Answer</div>
+                  <label>A</label>
+                  <input name="answers2" required />
+                  <label>B</label>
+                  <input name="answers2" required />
+                  <label>C</label>
+                  <input name="answers2" required />
+                </div>
+                <div class="question_options">
+                  <div>Select correct answer</div>
+                  <label>A</label>
+                  <input
+                    type="radio"
+                    class="bubble"
+                    name="soln2"
+                    value="1"
+                    required
+                  />
+                  <label>B</label>
+                  <input
+                    type="radio"
+                    class="bubble"
+                    name="soln2"
+                    value="2"
+                    required
+                  />
+                  <label>C</label>
+                  <input
+                    type="radio"
+                    class="bubble"
+                    name="soln2"
+                    value="3"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="question_1">
+              <div class="single_question_box">
+                <label>Question 3</label>
+                <input name="question" required />
+              </div>
+              <div class="solns">
+                <div class="question_options">
+                  <div>Insert Answer</div>
+                  <label>A</label>
+                  <input name="answers3" required />
+                  <label>B</label>
+                  <input name="answers3" required />
+                  <label>C</label>
+                  <input name="answers3" required />
+                </div>
+                <div class="question_options">
+                  <div>Select correct answer</div>
+                  <label>A</label>
+                  <input
+                    type="radio"
+                    class="bubble"
+                    name="soln3"
+                    value="1"
+                    required
+                  />
+                  <label>B</label>
+                  <input
+                    type="radio"
+                    class="bubble"
+                    name="soln3"
+                    value="2"
+                    required
+                  />
+                  <label>C</label>
+                  <input
+                    type="radio"
+                    class="bubble"
+                    name="soln3"
+                    value="3"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="question_1">
+              <div class="single_question_box">
+                <label>Question 4</label>
+                <input name="question" required />
+              </div>
+              <div class="solns">
+                <div class="question_options">
+                  <div>Insert Answer</div>
+                  <label>A</label>
+                  <input name="answers4" required />
+                  <label>B</label>
+                  <input name="answers4" required />
+                  <label>C</label>
+                  <input name="answers4" required />
+                </div>
+                <div class="question_options">
+                  <div>Select correct answer</div>
+                  <label>A</label>
+                  <input
+                    type="radio"
+                    class="bubble"
+                    name="soln4"
+                    value="1"
+                    required
+                  />
+                  <label>B</label>
+                  <input
+                    type="radio"
+                    class="bubble"
+                    name="soln4"
+                    value="2"
+                    required
+                  />
+                  <label>C</label>
+                  <input
+                    type="radio"
+                    class="bubble"
+                    name="soln4"
+                    value="3"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="try_again" class="create_btn" type="submit">
+          Create
+        </button>
+      </form>
+    </div>
+
+    <% } else { %>
+      <div class="login_msg">
+        <span class="login_msg">
+          <p class="login_msg">Please login to create a quiz</p>
+        </span>
       </div>
-      <button class = 'try_again' class = "create_btn" type="submit" >Create</button>
-    </form>
-
-
-
-
-
-  </div>
-
-  <% } else { %>
-    <p>Please login to create a quiz</p>
-
     <% } %>
-</body>
-
+  </body>
 </html>

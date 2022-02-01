@@ -32,11 +32,11 @@
     <main class="container">
       <div class="quiz_title"><%= quiz_name %> </div>
       <section class="all_questions">
-        <form action='/api/quiz/<%= quiz_id %>' method='POST'>
+        <form action='/quiz/<%= quiz_id %>' method='POST'>
 
           <!-- Each article will be eventually auto-generated from the database-->
           <% questions.forEach((item, questionIndex) => {%>
-          <article>
+          <article class="questions_box">
             <header>
               <div class="question">
                 <p><%= item.question %></p>

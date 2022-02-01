@@ -1,33 +1,30 @@
 nav {
-  height: 75px;
+  height: 70px;
   width: 100%;
-  background-color: #FEADA6;
-  color: #FFFFFF;
+  color: #ffffff;
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
   top: 0; /*to make the nav bar stay at the top*/
   position: fixed; /*overlaying the nav bar*/
-  // font-family: 'Roboto', 'sans-serif';
-  font-family: 'Be Vietnam Pro', sans-serif;
+  font-family: "Be Vietnam Pro", sans-serif;
   padding: 1.5em;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  }
+  flex-direction: row;
+  justify-content: space-between;
+}
 
-  /*Class for the TWEETER word */
-  // span {
-  //   font-family: "Roboto", sans-serif;
-  //   display: flex;
-  //    font-size: 18px;
-  //   align-items: center;
-  // }
+.fab {
+  font-size: 40px;
+  color: #042110;
+}
 
-.bold{
+.bold {
   font-weight: bold;
 }
 
 #logo {
   font-weight: bold;
-  width:193px;
+  width: 193px;
 }
 
 .links_header {
@@ -39,4 +36,16 @@ nav {
   margin-right: 10px;
 }
 
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  word-spacing: 0px;
+}
 
+.nav-item {
+  text-decoration: none;
+  font-weight: bold;
+  color: #042110;
+  font-size: 20px;
+}
