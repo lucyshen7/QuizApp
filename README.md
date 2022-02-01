@@ -2,7 +2,7 @@
 
 ## Welcome to our midterm project, **QuizApp!** 📚
 
-QuizApp is a full-stack multi-page quiz application built with Express.js, Node.js, PostgreSQL and CSS/Sass. 
+QuizApp is a full-stack multi-page quiz application built with jQuery, Express.js, Node.js, PostgreSQL, and CSS/Sass. 
 
 **QuizApp features:**
 - Ability to create and take a quiz
