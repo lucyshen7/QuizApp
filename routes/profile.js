@@ -13,7 +13,7 @@ module.exports = (db) => {
     db.query(query, [id])
       .then(data => {
         const quizzes = data.rows;
-        console.log('quizzes', quizzes);
+        // console.log('quizzes', quizzes);
 
         // check if user logged in
         const user_id = req.session.user_id;
@@ -22,7 +22,7 @@ module.exports = (db) => {
           user: user_id,
           quizzes: quizzes
         }
-        console.log('templateVars', templateVars)
+        // console.log('templateVars', templateVars)
         res.render("profile", templateVars);
 
       })

@@ -7,7 +7,7 @@ const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
-const cookieParser = require("cookie-parser");
+// const cookieParser = require("cookie-parser");
 const cookieSession = require("cookie-session");
 
 // PG database client/connection setup
@@ -50,8 +50,7 @@ const profileRoutes = require("./routes/profile");
 const quizRoutes = require("./routes/quiz");
 const quizResultsRoutes = require("./routes/quiz_results");
 
-const quizNewRoutes = require("./routes/create_new");
-const quizNewPostRoutes = require("./routes/create_new_post");
+const createRoutes = require("./routes/create");
 const loadPublic = require("./routes/load_public");
 // const search = require("./routes/search");
 
@@ -61,14 +60,13 @@ app.use("/profile", profileRoutes(db));
 app.use("/quiz", quizRoutes(db));
 app.use("/quiz/results", quizResultsRoutes(db));
 
-app.use("/quizzes", quizNewRoutes(db));
-app.use("/quizzes", quizNewPostRoutes(db));
+app.use("/quizzes", createRoutes(db));
+// app.use("/quizzes", quizNewPostRoutes(db));
 app.use("/api/public", loadPublic(db)); // sends JSON, so keep the /api
 
 // app.use("/api/quizzes/search", search(db));
 
 // Home page
-
 app.get("/", (req, res) => {
   res.redirect("/quizzes/public");
 });
@@ -76,7 +74,6 @@ app.get("/", (req, res) => {
 app.get('/login/:id', (req, res) => {
   req.session.user_id = req.params.id; // cookie-session middleware
   res.cookie('user_id', req.params.id); // cookie-parser middleware
-
   res.redirect('/'); // send the user somewhere
 });
 
@@ -85,14 +82,14 @@ app.get('/logout', (req, res) => {
   req.session = null;
   res.clearCookie("user_id");
   return res.redirect('/');
-})
+});
 
 // Helper function used on quiz page to convert question and answer indices to letters
 app.locals.indexToLetter = function(index) {
   const map = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
-  return map[index]
+  return map[index];
 };
 
 app.listen(PORT, () => {
-  console.log(`🎉Example app listening on port ${PORT}`);
+  console.log(`🎉QuizApp listening on port ${PORT}`);
 });

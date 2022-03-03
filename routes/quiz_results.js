@@ -1,5 +1,5 @@
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 
 module.exports = (db) => {
   router.get("/:quiz_id/attempt/:attempt_id/", (req, res) => {
@@ -39,7 +39,7 @@ module.exports = (db) => {
         templateVars.questions = questions.map((i) => {
           const answers = data.rows.filter((j) => j.question === i);
           return {
-            question:i,
+            question: i,
           }
         });
         const selected_answers = [];

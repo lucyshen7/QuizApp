@@ -7,7 +7,6 @@ INSERT INTO quizzes (user_id, name, subject, difficulty, public)
 VALUES (1, 'HTTP QUIZ','Web Development','easy',true),
 (1, 'Test Quiz','Web Development','easy',true);
 
-
 INSERT INTO questions (quiz_id, question)
 VALUES (1, 'What does HTTP stand for?'),
 (1, 'What is the purpose of HTTP?'),
@@ -17,8 +16,6 @@ VALUES (1, 'What does HTTP stand for?'),
 (2, 'test2'),
 (2, 'test3'),
 (2, 'test4');
-
-
 
 INSERT INTO answers (question_id, answer, correct)
 VALUES (1, 'HyperText Total Processing', false),

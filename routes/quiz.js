@@ -1,4 +1,3 @@
-const { text } = require('express');
 const express = require('express');
 const router = express.Router();
 
@@ -11,9 +10,9 @@ const getQuizFromDB = async (id, db) => {
     JOIN quizzes ON questions.quiz_id = quizzes.id
     WHERE questions.quiz_id = $1
     ORDER BY questions.id;`;
-  const data = await db.query(query, [id])
+  const data = await db.query(query, [id]);
   const questionData = data.rows;
-  console.log(questionData)
+  // console.log(questionData)
   const templateVars = {
     quiz_name: questionData[0].quiz_name,
     quiz_id: questionData[0].quiz_id
@@ -23,7 +22,7 @@ const getQuizFromDB = async (id, db) => {
   // Collecting each unique question in quiz and storing them in an array
   data.rows.forEach((q) => {
     if (!questions.includes(q.question)) {
-      questions.push(q.question)
+      questions.push(q.question);
     }
   });
 
@@ -40,9 +39,9 @@ const getQuizFromDB = async (id, db) => {
         return {
           text: a.answer,
           id: a.answer_id
-        }
+        };
       })
-    }
+    };
   });
 
   return templateVars;
@@ -60,14 +59,14 @@ const getScore = async (db, submissions, id) => {
   let correct_answers_id = [];
   correct_answers_id = data.rows.map(a => a.id);
   submissions.forEach((s, index) => {
-    if (s[1] == correct_answers_id[index]) {
+    if (s[1] === Number(correct_answers_id[index])) {
       score++;
     }
   });
-  console.log('score', score);
-  console.log('correct_answers_id ',correct_answers_id );
-  console.log('submissions', submissions);
-  console.log('data.rows', data.rows);
+  // console.log('score', score);
+  // console.log('correct_answers_id ',correct_answers_id );
+  // console.log('submissions', submissions);
+  // console.log('data.rows', data.rows);
   return score;
 };
 
@@ -78,7 +77,7 @@ module.exports = (db) => {
       .then(templateVars => {
         const user_id = req.session.user_id;
         templateVars.user = user_id;
-        console.log('quiz-templateVars', templateVars);
+        // console.log('quiz-templateVars', templateVars);
         res.render("quiz", templateVars);
       })
       .catch(err => {
