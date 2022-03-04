@@ -36,17 +36,13 @@
     <div class="create_new_quiz">
       <p class="create_title"><b>Add Question</b></p>
 
-      <% if (questionId !== 4) { %>
         <form method="POST" action="/quizzes/question/new">
-      <% } else { %>
-        <form method="POST" action="/quizzes/create">
-      <% } %>
 
         <div class="quiz_question_container">
           <div class="question_box">
             <div class="question_1">
               <div class="single_question_box">
-                <label id="question1">Question <%= questionId %>/4</label>
+                <label id="question1">Question <%= questionNum %>/4</label>
                 <input class="question_input" name="question" required />
                 <input type="hidden" name="quizId" value="<%= quizId %>" />
                 <input type="hidden" name="questionNum" value="<%= questionNum %>" />
@@ -90,7 +86,11 @@
                 </div>
               </div>
             </div>
-        <button class="try_again create_btn" type="submit">Add</button>
+            <% if (questionId !== 4) { %>
+              <button class="try_again create_btn" type="submit">Add</button>
+            <% } else { %>
+              <button class="try_again create_btn" type="submit">Create Quiz</button>
+            <% } %>
       </form>
     </div>
     <% } else { %>
