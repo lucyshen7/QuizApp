@@ -50,7 +50,9 @@ const profileRoutes = require("./routes/profile");
 const quizRoutes = require("./routes/quiz");
 const quizResultsRoutes = require("./routes/quiz_results");
 
-const createRoutes = require("./routes/create");
+const createQuizRoutes = require("./routes/create-quiz");
+const createQuestionsRoutes = require("./routes/create-question");
+
 const loadPublic = require("./routes/load_public");
 // const search = require("./routes/search");
 
@@ -60,8 +62,10 @@ app.use("/profile", profileRoutes(db));
 app.use("/quiz", quizRoutes(db));
 app.use("/quiz/results", quizResultsRoutes(db));
 
-app.use("/quizzes", createRoutes(db));
-// app.use("/quizzes", quizNewPostRoutes(db));
+// create routes
+app.use("/quizzes", createQuizRoutes(db));
+app.use("/quizzes/question", createQuestionsRoutes(db));
+
 app.use("/api/public", loadPublic(db)); // sends JSON, so keep the /api
 
 // app.use("/api/quizzes/search", search(db));
