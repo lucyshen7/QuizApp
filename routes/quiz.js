@@ -59,12 +59,12 @@ const getScore = async (db, submissions, id) => {
   let correct_answers_id = [];
   correct_answers_id = data.rows.map(a => a.id);
   submissions.forEach((s, index) => {
-    if (s[1] === Number(correct_answers_id[index])) {
+    if (Number(s[1]) === correct_answers_id[index]) {
       score++;
     }
   });
   // console.log('score', score);
-  // console.log('correct_answers_id ',correct_answers_id );
+  // console.log('correct_answers_id ',correct_answers_id);
   // console.log('submissions', submissions);
   // console.log('data.rows', data.rows);
   return score;
