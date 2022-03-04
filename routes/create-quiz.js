@@ -4,7 +4,6 @@ const router = express.Router();
 module.exports = (db) => {
   router.get("/new", (req, res) => {
     let query = ``;
-    // console.log(query);
     db.query(query)
       .then(data => {
         const quizzes = data.rows;
@@ -36,6 +35,7 @@ module.exports = (db) => {
           user: userId,
           questionId: 1, // first question
           quizId: quizId,
+          questionNum: 1
         };
         console.log('another one. templateVars!!!!', templateVars);
         return res.render("new_question", templateVars);

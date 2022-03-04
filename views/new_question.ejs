@@ -37,7 +37,7 @@
       <p class="create_title"><b>Add Question</b></p>
 
       <% if (questionId !== 4) { %>
-        <form method="POST" action="/quizzes/question/<%= Number(questionId) + 1 %>">
+        <form method="POST" action="/quizzes/question/new">
       <% } else { %>
         <form method="POST" action="/quizzes/create">
       <% } %>
@@ -49,16 +49,17 @@
                 <label id="question1">Question <%= questionId %>/4</label>
                 <input class="question_input" name="question" required />
                 <input type="hidden" name="quizId" value="<%= quizId %>" />
+                <input type="hidden" name="questionNum" value="<%= questionNum %>" />
               </div>
               <div class="solutions">
                 <div class="question_options">
                   <div>Insert answer</div>
-                  <label for="answers">A</label>
-                  <input name="answers" required />
-                  <label for="answers">B</label>
-                  <input name="answers" required />
-                  <label for="answers">C</label>
-                  <input name="answers" required />
+                  <label for="answer1">A</label>
+                  <input name="answer1" required />
+                  <label for="answer2">B</label>
+                  <input name="answer2" required />
+                  <label for="answer3">C</label>
+                  <input name="answer3" required />
                 </div>
                 <div class="question_options">
                   <div>Select correct answer</div>
